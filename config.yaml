@@ -1,3 +1,20 @@
+project:
+  name: "DeepGOMS"
+  version: "2.0"
+
+data:
+  raw_dir: "data/raw/"
+  processed_dir: "data/processed/"
+  microbiome_dir: "data/microbiome/"
+  scrnaseq_dir: "data/scRNAseq/"
+  spatial_dir: "data/spatial/"
+  cohorts:
+    - "TCGA"
+    - "MCSPACE"
+    - "ONCOBIOME"
+    - "PRECISE"
+    - "NRCO_GOMS"
+
 samples:
   - sample1
   - sample2
@@ -5,3 +22,12 @@ samples:
 kraken_db: "/path/to/kraken_db"
 humann_db: "/path/to/humann_db"
 output_dir: "results/"
+
+model:
+  input_dim: 512
+  hidden_dims: [256, 128, 64]
+  dropout_rate: 0.3
+  learning_rate: 0.001
+  batch_size: 32
+  epochs: 50
+  cv_strategy: "LODO" # Leave-One-Cohort-Out
